@@ -1,6 +1,4 @@
-# cloudflare-worker-github-app-example
-
-> A Cloudflare Worker + GitHub App Example
+# CloudflareWorker
 
 The [worker.js](worker.js) file is a [Cloudflare Worker](https://workers.cloudflare.com/) which is continuously deployed using GitHub Actions (see [.github/workflows/deploy.yml](.github/workflows/deploy.yml)).
 
@@ -10,8 +8,6 @@ The worker does 2 things
 2. `POST` requests: handle webhook request from GitHub
 
 ⚠️ The requests from GitHub are currently not verified using the signature, because [the code is currently using Node's crypto package](https://github.com/octokit/webhooks.js/blob/0e03e470034ac769a28ed37acb524b94e304bf96/src/sign/index.ts#L1). This will be resolved once I create a universal webhook verification package, similar to [`universal-github-app-jwt`](https://github.com/gr2m/universal-github-app-jwt/#readme). For the time being, you could define a secret path that that webhook requests by GitHub are sent to, in order to prevent anyone who knows your workers URL from sending fake webhook requests. See [#1](https://github.com/gr2m/cloudflare-worker-github-app-example/issues/1)
-
-![screen recording of GitHub app creating a comment on a new GitHub issue](assets/hello-there-cloudflare-worker.gif)
 
 ## Step-by-step instructions to create your own
 

@@ -1,12 +1,15 @@
 {
-  "name": "cloudflare-workers-playground",
-  "version": "1.0.0",
+  "name": "cloudflare_worker_agstrand-com",
+  "version": "0.1.1",
   "private": true,
-  "description": "A Cloudflare Worker + GitHub App Example",
+  "description": "Cloudflare Worker for Agstrand.com",
+  "url": "https://agstrand.com",
   "main": "worker.js",
-  "author": "Gregor Martynus (https://twitter.com/gr2m)",
+  "author": "& Daniel Ågstrand (https://linkedin.com/in/daniel-agstrand)",
+  "email": "g_a@agstrand.com",
+  "co-author": "Gregor Martynus (https://twitter.com/gr2m)",
   "license": "ISC",
-  "repository": "github:gr2m/cloudflare-worker-github-app-example",
+  "repository": "github:IG-AI/CloudflareWorker",
   "dependencies": {
     "@octokit/app": "^10.0.2"
   },
