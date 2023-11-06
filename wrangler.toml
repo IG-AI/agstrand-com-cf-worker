@@ -12,3 +12,7 @@ include = ["./assets"]
 routes = [
 	{ pattern = "cf.agstrand.com", custom_domain = true }
 ]
+[build]
+command = "sudo npm install --global wrangler && wrangler login
+cwd = "build_cwd"
+watch_dir = "build_watch_dir"
