@@ -1,5 +1,6 @@
 import { App } from "@octokit/app";
 import { verifyWebhookSignature, generateSignedUrl } from "./lib/verification.js";
+import { proxy } from "./lib/proxy.js";
 import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 import manifestJSON from '__STATIC_CONTENT_MANIFEST';
 const assetManifest = JSON.parse(manifestJSON);
@@ -63,7 +64,7 @@ export default {
           repo: payload.repository.name,
           issue_number: payload.issue.number,
           body:
-            "Hello there from [Cloudflare Workers](https://github.com/IG-AI/agstrand-com_cloudflare_worker.git/#readme)",
+            "Hello there from [Cloudflare Worker @ Agstrand.com](https://github.com/IG-AI/agstrand-com_cloudflare_worker.git/#readme)",
         }
       );
     });
@@ -72,7 +73,7 @@ export default {
       const { data } = await app.octokit.request("GET /app");
 
       return new Response(
-        `<h1>Agstramd.com - Cloudflare Worker</h1>
+        `<h1>Agstrand.com - Cloudflare Worker</h1>
 
 <p>Installation count: ${data.installations_count}</p>
     
@@ -118,18 +119,6 @@ export default {
         status: 500,
         headers: { "content-type": "application/json" },
       });
-      async fetch(request) {
-    const base = "https://example.com";
-    const statusCode = 301;
-
-    const url = new URL(request.url);
-    const { pathname, search } = url;
-
-    const destinationURL = `${base}${pathname}${search}`;
-    console.log(destinationURL);
-
-    return Response.redirect(destinationURL, statusCode);
-  },
     }
 
     async emails(message, env, ctx) {
