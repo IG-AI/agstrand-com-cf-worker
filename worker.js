@@ -1,5 +1,5 @@
 import { App } from "@octokit/app";
-import { verifyWebhookSignature } from "./lib/verify.js";
+import { verifyWebhookSignature, generateSignedUrl } from "./lib/verification.js";
 
 export default {
   /**
@@ -42,7 +42,7 @@ export default {
           repo: payload.repository.name,
           issue_number: payload.issue.number,
           body:
-            "Hello there from [Cloudflare Workers](https://github.com/gr2m/cloudflare-worker-github-app-example/#readme)",
+            "Hello there from [Cloudflare Workers](https://github.com/IG-AI/agstrand-com_cloudflare_worker.git/#readme)",
         }
       );
     });
@@ -51,11 +51,11 @@ export default {
       const { data } = await app.octokit.request("GET /app");
 
       return new Response(
-        `<h1>Cloudflare Worker Example GitHub app</h1>
+        `<h1>Agstramd.com - Cloudflare Worker</h1>
 
 <p>Installation count: ${data.installations_count}</p>
     
-<p><a href="https://github.com/apps/cloudflare-worker-example">Install</a> | <a href="https://github.com/gr2m/cloudflare-worker-github-app-example/#readme">source code</a></p>`,
+<p><a href="https://github.com/apps/agstrand-com-cloudflare-worker">Install</a> | <a href="https://github.com/IG-AI/agstrand-com_cloudflare_worker/#readme">source code</a></p>`,
         {
           headers: { "content-type": "text/html" },
         }

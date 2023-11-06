@@ -1,5 +1,5 @@
 {
-  "name": "cloudflare_worker_agstrand-com",
+  "name": "agstrand-com_cloudflare_worker",
   "version": "0.1.1",
   "private": true,
   "description": "Cloudflare Worker for Agstrand.com",
@@ -9,7 +9,7 @@
   "email": "g_a@agstrand.com",
   "co-author": "Gregor Martynus (https://twitter.com/gr2m)",
   "license": "ISC",
-  "repository": "github:IG-AI/CloudflareWorker",
+  "repository": "github.com:IG-AI/agstrand-com_cloudflare_worker.git",
   "dependencies": {
     "@octokit/app": "^10.0.2"
   },
