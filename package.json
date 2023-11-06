@@ -17,5 +17,8 @@
     "branches": [
       "main"
     ]
+  },
+  "devDependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.0"
   }
 }

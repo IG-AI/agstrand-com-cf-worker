@@ -1,7 +1,14 @@
-name = "cloudflare-worker"
+name = "agstrand-com_cloudflare_worker"
 account_id = "6c70984c450202a9506a437c273e742d"
+zone_id = "c27dabaae63bfd8d1bfafaea7c861962"
 workers_dev = true
 
 main = "worker.js"
 compatibility_date = "2023-11-06"
 node_compat = true
+[site]
+bucket = "./assets"
+include = ["./assets"]
+routes = [
+	{ pattern = "cf.agstrand.com", custom_domain = true }
+]

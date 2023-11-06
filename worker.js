@@ -1,5 +1,8 @@
 import { App } from "@octokit/app";
 import { verifyWebhookSignature, generateSignedUrl } from "./lib/verification.js";
+import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
+import manifestJSON from '__STATIC_CONTENT_MANIFEST';
+const assetManifest = JSON.parse(manifestJSON);
 
 export default {
   /**
@@ -7,7 +10,25 @@ export default {
    * @param {Record<string, any>} env
    */
   async fetch(request, env) {
-
+    try {
+      // Add logic to decide whether to serve an asset or run your original Worker code
+      return await getAssetFromKV(
+        {
+          request,
+          waitUntil: ctx.waitUntil.bind(ctx),
+        },
+        {
+          ASSET_NAMESPACE: env.__STATIC_CONTENT,
+          ASSET_MANIFEST: assetManifest,
+        }
+      );
+    } catch (e) {
+      let pathname = new URL(request.url).pathname;
+      return new Response(`"${pathname}" not found`, {
+        status: 404,
+        statusText: 'not found',
+      });
+    }
     // wrangler secret put APP_ID
     const appId = env.APP_ID;
     // wrangler secret put WEBHOOK_SECRET
@@ -97,6 +118,27 @@ export default {
         status: 500,
         headers: { "content-type": "application/json" },
       });
-    }
+      async fetch(request) {
+    const base = "https://example.com";
+    const statusCode = 301;
+
+    const url = new URL(request.url);
+    const { pathname, search } = url;
+
+    const destinationURL = `${base}${pathname}${search}`;
+    console.log(destinationURL);
+
+    return Response.redirect(destinationURL, statusCode);
   },
+    }
+
+    async emails(message, env, ctx) {
+    const allowList = ["daniel@agstrand.com", "g_a@agstrand.com"];
+    const forward_adr = "d.e.agstrand@gmail.com"
+    if (allowList.indexOf(message.headers.get("to")) == -1) {
+      message.setReject("Address not allowed");
+    } else {
+      await message.forward(forward_adr);
+    }
+  }
 };
