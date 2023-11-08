@@ -13,3 +13,7 @@ include = ["./assets"]
 
 [placement]
 mode = "smart"
+
+[build]
+command = "[ -d sites-enabled/ ] && mkdir ./assets "
+cwd = ".cwd"
