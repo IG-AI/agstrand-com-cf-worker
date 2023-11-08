@@ -5,11 +5,11 @@ main = "worker.js"
 compatibility_date = "2023-11-06"
 node_compat = true
 
-route = { pattern = "agstrand.com", custom_domain = true }
+
 
 [build]
 command = "if ! [[ -d ./assets ]] ; then mkdir ./assets ; fi && if ! [[ -d ./.cwd ]] ; then mkdir ./.cwd ; fi"
-cwd = ".cwd"
+cwd = "./.cwd"
 
 [site]
 bucket = "./assets"
@@ -17,3 +17,11 @@ include = ["./assets"]
 
 [placement]
 mode = "smart"
+
+route = [
+  { pattern = "agstrand.com", custom_domain = true }
+]
+
+kv_namespaces = [
+  { binding = "CACHE", id = "7b763c384dce4b8d949856fcb429d1e6" }
+]
