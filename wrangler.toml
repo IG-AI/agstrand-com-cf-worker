@@ -1,4 +1,4 @@
-name = "agstrand-com_cf-worker"
+name = "agstrand-com-cf-worker"
 account_id = "6c70984c450202a9506a437c273e742d"
 workers_dev = true
 main = "worker.js"
