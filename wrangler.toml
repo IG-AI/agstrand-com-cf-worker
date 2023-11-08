@@ -7,13 +7,13 @@ node_compat = true
 
 route = { pattern = "agstrand.com", custom_domain = true }
 
+[build]
+command = "if ! [ -d ./assets ] ; then mkdir ./assets ; fi && if ! [ -d ./.cwd ] ; then mkdir ./.cwd ; fi"
+cwd = ".cwd"
+
 [site]
 bucket = "./assets"
 include = ["./assets"]
 
 [placement]
 mode = "smart"
-
-[build]
-command = "[ -d sites-enabled/ ] && mkdir ./assets "
-cwd = ".cwd"
