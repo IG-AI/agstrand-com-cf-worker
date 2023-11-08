@@ -1,18 +1,15 @@
-name = "agstrand-com_cloudflare_worker"
+name = "agstrand-com_cf-worker"
 account_id = "6c70984c450202a9506a437c273e742d"
 workers_dev = true
 main = "worker.js"
 compatibility_date = "2023-11-06"
 node_compat = true
-routes = [
-	{ pattern = "cf.agstrand.com", custom_domain = true }
-]
+
+route = { pattern = "agstrand.com", custom_domain = true }
 
 [site]
-bucket = "./.assets"
-include = ["./.assets"]
+bucket = "./assets"
+include = ["./assets"]
 
-[build]
-#command = "sudo npm install --global wrangler && wrangler login"
-cwd = "./.cwd"
-watch_dir = "./.watcher"
+[placement]
+mode = "smart"
