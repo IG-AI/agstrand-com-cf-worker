@@ -8,7 +8,7 @@ node_compat = true
 route = { pattern = "agstrand.com", custom_domain = true }
 
 [build]
-command = "if ! [ -d ./assets ] ; then mkdir ./assets ; fi && if ! [ -d ./.cwd ] ; then mkdir ./.cwd ; fi"
+command = "if ! [[ -d ./assets ]] ; then mkdir ./assets ; fi && if ! [[ -d ./.cwd ]] ; then mkdir ./.cwd ; fi"
 cwd = ".cwd"
 
 [site]
