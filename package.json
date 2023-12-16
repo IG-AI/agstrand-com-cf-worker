@@ -11,7 +11,7 @@
   "license": "ISC",
   "repository": "github.com:IG-AI/agstrand-com_cloudflare_worker.git",
   "dependencies": {
-    "@octokit/app": "^10.0.2"
+    "@octokit/app": "^14.0.2"
   },
   "release": {
     "branches": [
